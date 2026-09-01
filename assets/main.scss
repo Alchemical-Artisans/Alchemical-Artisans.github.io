@@ -1,0 +1,418 @@
+---
+# Alchemical Artisans theme — overrides Minima defaults, then re-skins.
+---
+
+@charset "utf-8";
+
+// ==========================================================================
+//  1. Minima variable overrides  (must precede `@import "minima"`)
+// ==========================================================================
+
+// Body: clean modern serif for readability
+$base-font-family: "EB Garamond", "Merriweather", Georgia, "Times New Roman", serif;
+$base-font-size:   19px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.82;
+$base-line-height: 1.72;
+
+$spacing-unit:     32px;
+$content-width:    880px;
+$on-palm:          600px;
+$on-laptop:        880px;
+
+// Colours drawn from assets/css/palette.css
+$text-color:        #2a2c28;   // Charcoal Black
+$background-color:   #e8d2a1;   // Parchment Beige
+$brand-color:        #67341c;   // Burnt Umber
+
+$grey-color:         #837053;   // Smoky Ash
+$grey-color-light:   #d5bb86;   // Aged Paper
+$grey-color-dark:    #23273b;   // Midnight Indigo
+
+@import "minima";
+
+// ==========================================================================
+//  2. Alchemical Artisans re-skin
+// ==========================================================================
+
+// --- Aged parchment ground, faint ink stains, gilded vignette --------------
+html {
+  background-color: #d8c090;
+}
+
+body {
+  color: var(--aa-text, #2a2c28);
+  background-color: var(--aa-parchment-beige, #e8d2a1);
+  background-image:
+    // faint ink stains
+    radial-gradient(ellipse 220px 150px at 12% 18%, rgba(35, 39, 59, 0.10), transparent 70%),
+    radial-gradient(ellipse 300px 200px at 88% 8%,  rgba(101, 36, 29, 0.08), transparent 70%),
+    radial-gradient(ellipse 260px 190px at 78% 92%, rgba(38, 65, 50, 0.08), transparent 72%),
+    radial-gradient(ellipse 180px 160px at 5% 82%,  rgba(101, 52, 28, 0.09), transparent 70%),
+    // gilded edge vignette
+    radial-gradient(circle at 50% 40%, transparent 55%, rgba(101, 52, 28, 0.14) 100%),
+    // parchment fibre grain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.36 0 0 0 0 0.25 0 0 0 0 0.13 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-attachment: fixed, fixed, fixed, fixed, fixed, scroll;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+}
+
+// --- Compass-rose watermark ----------------------------------------------
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  left: 50%;
+  top: 52%;
+  width: min(78vw, 760px);
+  height: min(78vw, 760px);
+  transform: translate(-50%, -50%);
+  opacity: 0.05;
+  pointer-events: none;
+  background: center / contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='%2367341c' stroke-width='2' stroke-linejoin='round'%3E%3Ccircle cx='200' cy='200' r='190'/%3E%3Ccircle cx='200' cy='200' r='178'/%3E%3Ccircle cx='200' cy='200' r='104'/%3E%3Cg stroke-width='1.4'%3E%3Cline x1='200' y1='4' x2='200' y2='26'/%3E%3Cline x1='200' y1='374' x2='200' y2='396'/%3E%3Cline x1='4' y1='200' x2='26' y2='200'/%3E%3Cline x1='374' y1='200' x2='396' y2='200'/%3E%3Cline x1='70' y1='70' x2='86' y2='86'/%3E%3Cline x1='330' y1='70' x2='314' y2='86'/%3E%3Cline x1='70' y1='330' x2='86' y2='314'/%3E%3Cline x1='330' y1='330' x2='314' y2='314'/%3E%3C/g%3E%3Cpolygon points='200,200 184,184 116,116 216,216'/%3E%3Cpolygon points='200,200 216,184 284,116 184,216'/%3E%3Cpolygon points='200,200 216,216 284,284 184,184'/%3E%3Cpolygon points='200,200 184,216 116,284 216,184'/%3E%3Cpolygon points='200,200 180,180 200,40 220,180'/%3E%3Cpolygon points='200,200 180,220 200,360 220,220'/%3E%3Cpolygon points='200,200 180,180 40,200 180,220'/%3E%3Cpolygon points='200,200 220,180 360,200 220,220'/%3E%3Ccircle cx='200' cy='200' r='16'/%3E%3C/svg%3E");
+}
+
+// keep real content above the watermark
+.site-header,
+.page-content,
+.site-footer { position: relative; z-index: 1; }
+
+// ==========================================================================
+//  3. Typography — gothic serif headings, modern serif body
+// ==========================================================================
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cinzel Decorative", "Cinzel", "Trajan Pro", Georgia, serif;
+  color: var(--aa-heading, #67341c);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+h1 { @include relative-font-size(2.1); margin-bottom: $spacing-unit * 0.6; }
+h2 { @include relative-font-size(1.6); margin-top: $spacing-unit; }
+h3 { @include relative-font-size(1.3); }
+
+// small gilded rule under the big headings
+h1::after,
+h2::after {
+  content: "";
+  display: block;
+  width: 3.2em;
+  height: 2px;
+  margin-top: 0.4em;
+  background: linear-gradient(90deg, #bf9431, #c49a3d 45%, rgba(191, 148, 49, 0));
+}
+
+p, li { max-width: 68ch; }
+
+a {
+  color: var(--aa-link, #67341c);
+  text-decoration-color: rgba(191, 148, 49, 0.6);
+  text-underline-offset: 0.15em;
+  &:hover {
+    color: var(--aa-link-hover, #65241d);
+    text-decoration-color: currentColor;
+  }
+}
+
+::selection { background: rgba(191, 148, 49, 0.4); }
+
+// ==========================================================================
+//  4. Header — midnight indigo band with gilded edge
+// ==========================================================================
+.site-header {
+  background: linear-gradient(180deg, #23273b, #1c2033);
+  border-top: none;
+  border-bottom: 3px solid #bf9431;
+  box-shadow: 0 2px 0 rgba(101, 52, 28, 0.35), 0 6px 18px rgba(0, 0, 0, 0.25);
+  min-height: auto;
+}
+
+.site-title {
+  &, &:visited {
+    font-family: "Uncial Antiqua", "Cinzel Decorative", Georgia, serif;
+    color: #e8d2a1 !important;
+    @include relative-font-size(1.55);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    padding: 0.35em 0;
+  }
+  &:hover { color: #c49a3d !important; text-decoration: none; }
+}
+
+.site-nav {
+  background: transparent;
+  border: 0;
+  line-height: normal;
+
+  .page-link {
+    font-family: "Cinzel Decorative", Georgia, serif;
+    color: #ddcaa9;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    &:hover { color: #c49a3d; }
+  }
+
+  @include media-query($on-palm) {
+    background-color: #23273b;
+    border: 1px solid #bf9431;
+    .menu-icon > svg { fill: #c49a3d; }
+    .page-link { color: #ddcaa9; }
+  }
+}
+
+// ==========================================================================
+//  5. Footer — matching night band
+// ==========================================================================
+.site-footer {
+  background: linear-gradient(0deg, #23273b, #1c2033);
+  border-top: 3px solid #bf9431;
+  color: #ddcaa9;
+  margin-top: $spacing-unit * 2;
+  padding: $spacing-unit 0 ($spacing-unit * 1.2);
+}
+.site-footer a,
+.site-footer a:visited {
+  color: #ddcaa9;
+  text-decoration-color: rgba(191, 148, 49, 0.6);
+}
+.site-footer a:hover { color: #c49a3d; }
+.site-footer .footer-col-wrapper,
+.site-footer .contact-list { color: #c0b5a4; }
+
+.aa-footer-crest {
+  color: #bf9431;
+  width: 150px;
+  margin: 0 auto 0.4em;
+  svg { display: block; width: 100%; height: auto; }
+}
+
+.site-footer .footer-heading {
+  font-family: "Uncial Antiqua", "Cinzel Decorative", Georgia, serif;
+  color: #e8d2a1;
+  text-align: center;
+  @include relative-font-size(1.5);
+  margin-bottom: 0.15em;
+  &::after { display: none; }
+}
+
+.aa-footer-motto {
+  text-align: center;
+  font-style: italic;
+  color: #837053;
+  letter-spacing: 0.03em;
+  margin: 0 0 $spacing-unit;
+}
+
+.aa-footer-label {
+  font-family: "Cinzel Decorative", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: #c49a3d;
+  margin: 0 0 0.7em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid rgba(191, 148, 49, 0.35);
+  &::after { display: none; }
+}
+
+.aa-footer-list,
+.site-footer .contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+.aa-footer-list > li { position: relative; padding-left: 1.1em; }
+.aa-footer-list > li::before {
+  content: "\2726";           // four-pointed star / alchemical marginalia
+  position: absolute;
+  left: 0;
+  color: #bf9431;
+  font-size: 0.7em;
+  top: 0.15em;
+}
+
+.aa-footer-axiom {
+  margin-top: 0.8em;
+  font-style: italic;
+  color: #837053;
+  font-size: 0.9rem;
+}
+
+.aa-footer-nav {
+  margin: $spacing-unit 0 0;
+  padding-top: $spacing-unit * 0.7;
+  border-top: 1px solid rgba(191, 148, 49, 0.3);
+  text-align: center;
+  font-family: "Cinzel Decorative", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: #837053;
+  a, a:visited { color: #ddcaa9; }
+  a:hover { color: #c49a3d; }
+}
+
+.aa-footer-fineprint {
+  margin: 0.9em 0 0;
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #837053;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ==========================================================================
+//  6. Body content — rules, quotes, code, tables
+// ==========================================================================
+
+// ornamented horizontal rule
+hr {
+  border: 0;
+  height: 26px;
+  background: none;
+  text-align: center;
+  &::after {
+    content: "\2766";           // floral heart / fleuron
+    color: #bf9431;
+    font-size: 1.4rem;
+    position: relative;
+    padding: 0 0.6em;
+  }
+  &::before {
+    content: "";
+    display: block;
+    position: relative;
+    top: 13px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #bf9431 20%, #bf9431 80%, transparent);
+  }
+}
+
+blockquote {
+  color: #264132;
+  border-left: 4px solid #bf9431;
+  background: rgba(213, 187, 134, 0.35);
+  padding: 0.4em 1em;
+  font-style: italic;
+  > :last-child { margin-bottom: 0; }
+}
+
+pre, code {
+  font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  border: 1px solid rgba(101, 52, 28, 0.35);
+  background-color: #f0e2c4;
+}
+pre {
+  background-color: #2a2c28;
+  color: #e8d2a1;
+  border-color: #67341c;
+  > code { border: 0; background: transparent; color: inherit; }
+}
+
+table {
+  border-collapse: collapse;
+  th { background-color: #23273b; color: #e8d2a1; border-color: #67341c; }
+  td { border-color: rgba(101, 52, 28, 0.3); }
+  tr:nth-child(even) { background-color: rgba(213, 187, 134, 0.4); }
+}
+
+// ==========================================================================
+//  7. Home page hero + journal list
+// ==========================================================================
+.aa-hero {
+  text-align: center;
+  padding: $spacing-unit 0 ($spacing-unit * 1.2);
+  margin-bottom: $spacing-unit;
+  border-bottom: 1px solid rgba(101, 52, 28, 0.25);
+}
+.aa-hero__emblem {
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 0.6em;
+  display: block;
+  color: #67341c;
+  filter: drop-shadow(0 1px 0 rgba(191, 148, 49, 0.7));
+}
+.aa-hero__title {
+  font-family: "Uncial Antiqua", "Cinzel Decorative", Georgia, serif;
+  @include relative-font-size(2.6);
+  color: #23273b;
+  margin: 0.1em 0 0.15em;
+  &::after { display: none; }
+}
+.aa-hero__tagline {
+  font-family: "Cinzel Decorative", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.78rem;
+  color: #837053;
+  margin: 0;
+}
+.aa-hero__lead {
+  max-width: 60ch;
+  margin: 1.1em auto 0;
+  font-size: 1.06rem;
+}
+
+.aa-rule-fancy {
+  border: 0;
+  margin: $spacing-unit auto;
+  width: 62%;
+  height: 22px;
+  background:
+    radial-gradient(circle at 50% 50%, #bf9431 0 3px, transparent 4px),
+    linear-gradient(90deg, transparent, #bf9431 15%, #bf9431 85%, transparent);
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-size: 10px 10px, 100% 1px;
+  &::after { content: none; }
+  &::before { content: none; }
+}
+
+.post-list-heading {
+  font-family: "Cinzel Decorative", Georgia, serif;
+  text-align: center;
+  color: #67341c;
+  &::after { margin-left: auto; margin-right: auto; }
+}
+
+.post-list {
+  margin-left: 0;
+  > li {
+    list-style: none;
+    margin-bottom: $spacing-unit;
+    padding: $spacing-unit * 0.7 $spacing-unit * 0.9;
+    background: rgba(224, 205, 170, 0.78);
+    border: 1px solid rgba(191, 148, 49, 0.55);
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 3px rgba(232, 210, 161, 0.6),
+                0 2px 8px rgba(42, 44, 40, 0.12);
+  }
+  h3 { margin-top: 0; }
+}
+.post-meta {
+  color: #837053;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+.post-link {
+  font-family: "Cinzel Decorative", Georgia, serif;
+  color: #67341c;
+}
+
+.rss-subscribe {
+  text-align: center;
+  font-style: italic;
+  color: #837053;
+}
+
+// marginalia flourish beside first-level list items in prose
+.page-content .post-content ul > li::marker,
+.home ul:not(.post-list) > li::marker { color: #bf9431; }

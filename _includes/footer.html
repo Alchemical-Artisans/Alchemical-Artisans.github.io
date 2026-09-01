@@ -1,0 +1,73 @@
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+
+    <div class="aa-footer-crest" aria-hidden="true">
+      <svg viewBox="0 0 120 40" fill="none" stroke="currentColor" stroke-width="1.4">
+        <line x1="0" y1="20" x2="42" y2="20"/>
+        <line x1="78" y1="20" x2="120" y2="20"/>
+        <circle cx="60" cy="20" r="10"/>
+        <polygon points="60,20 56,16 60,3 64,16"/>
+        <polygon points="60,20 56,24 60,37 64,24"/>
+        <polygon points="60,20 56,16 43,20 56,24"/>
+        <polygon points="60,20 64,16 77,20 64,24"/>
+        <polygon points="60,20 56,16 60,3 64,16" fill="currentColor" stroke="none"/>
+        <circle cx="60" cy="20" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+
+    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+    <p class="aa-footer-motto">Solve et Coagula &mdash; dissolve the tangle, reforge it sound.</p>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <h3 class="aa-footer-label">The Workshop</h3>
+        <ul class="contact-list">
+          <li class="p-name">
+            {%- if site.author -%}{{ site.author | escape }}{%- else -%}{{ site.title | escape }}{%- endif -%}
+          </li>
+          {%- if site.email -%}
+          <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          {%- endif -%}
+          {%- if site.github_username -%}
+          <li><a href="https://github.com/{{ site.github_username | cgi_escape | escape }}">github.com/{{ site.github_username | escape }}</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <h3 class="aa-footer-label">Disciplines</h3>
+        <ul class="aa-footer-list">
+          <li>Systems Architecture &amp; Review</li>
+          <li>Legacy Modernisation</li>
+          <li>Cloud &amp; Platform Engineering</li>
+          <li>Data Engineering &amp; Analytics</li>
+          <li>Accessibility &amp; Inclusive Design</li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <h3 class="aa-footer-label">The Method</h3>
+        <p>{{- site.description | escape -}}</p>
+        <p class="aa-footer-axiom">&ldquo;As above, so below&rdquo; &mdash; the diagram
+          and the running system must agree.</p>
+      </div>
+    </div>
+
+    <nav class="aa-footer-nav" aria-label="Footer">
+      <a href="{{ '/accessibility/' | relative_url }}">Accessibility Statement</a>
+      &nbsp;&middot;&nbsp;
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      &nbsp;&middot;&nbsp;
+      <a href="#top">Back to top</a>
+    </nav>
+
+    <p class="aa-footer-fineprint">
+      &copy; {{ site.time | date: '%Y' }} {{ site.title | escape }}.
+      Notes bound in the workshop; results measured in the field.
+    </p>
+
+  </div>
+
+</footer>

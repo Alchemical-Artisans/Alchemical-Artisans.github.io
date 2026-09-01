@@ -1,0 +1,78 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <section class="aa-hero">
+    <svg class="aa-hero__emblem" viewBox="0 0 200 200" fill="none"
+         stroke="currentColor" stroke-width="2.4" aria-hidden="true"
+         stroke-linejoin="round">
+      <!-- ouroboros ring -->
+      <circle cx="100" cy="100" r="92" stroke-width="1.4"/>
+      <circle cx="100" cy="100" r="86"/>
+      <!-- 12-point zodiac ticks -->
+      <g stroke-width="1.4">
+        <line x1="100" y1="8"   x2="100" y2="22"/>
+        <line x1="100" y1="178" x2="100" y2="192"/>
+        <line x1="8"   y1="100" x2="22"  y2="100"/>
+        <line x1="178" y1="100" x2="192" y2="100"/>
+        <line x1="35"  y1="35"  x2="45"  y2="45"/>
+        <line x1="165" y1="35"  x2="155" y2="45"/>
+        <line x1="35"  y1="165" x2="45"  y2="155"/>
+        <line x1="165" y1="165" x2="155" y2="155"/>
+      </g>
+      <!-- compass rose -->
+      <circle cx="100" cy="100" r="52"/>
+      <!-- diagonal (ordinal) points -->
+      <g stroke-width="1.6">
+        <polygon points="100,100 92,92 58,58 108,108"/>
+        <polygon points="100,100 108,92 142,58 92,108"/>
+        <polygon points="100,100 108,108 142,142 92,92"/>
+        <polygon points="100,100 92,108 58,142 108,92"/>
+      </g>
+      <!-- cardinal points -->
+      <polygon points="100,100 90,90 100,24 110,90"/>
+      <polygon points="100,100 90,110 100,176 110,110"/>
+      <polygon points="100,100 90,90 24,100 90,110"/>
+      <polygon points="100,100 110,90 176,100 110,110"/>
+      <!-- north needle filled -->
+      <polygon points="100,100 90,90 100,24 110,90" fill="currentColor" stroke="none"/>
+      <!-- hub -->
+      <circle cx="100" cy="100" r="8"/>
+      <circle cx="100" cy="100" r="3" fill="currentColor" stroke="none"/>
+    </svg>
+
+    <h1 class="aa-hero__title">{{ site.title | escape }}</h1>
+    <p class="aa-hero__tagline">Solve &nbsp;&middot;&nbsp; Coagula</p>
+
+    {%- if content != "" -%}
+      <div class="aa-hero__lead">{{ content }}</div>
+    {%- endif -%}
+  </section>
+
+  <hr class="aa-rule-fancy">
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "From the Workshop Journal" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.posts -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {%- endif -%}
+
+</div>

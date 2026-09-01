@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Alchemical Artisans — Colour System
+   Transcribed from "AA Colour Scheme — Option 1"
+   Three coordinated sets: Primary, Secondary, Atmospheric.
+   ========================================================================== */
+
+:root {
+  /* ----- PRIMARY PALETTE -------------------------------------------------
+     The everyday surface + ink of the site: parchment, char, and gold. */
+  --aa-parchment-beige: #e8d2a1;   /* Parchment Beige  — main page ground   */
+  --aa-aged-paper:      #d5bb86;   /* Aged Paper       — panels, insets     */
+  --aa-charcoal-black:  #2a2c28;   /* Charcoal Black   — body ink           */
+  --aa-antique-gold:    #bf9431;   /* Antique Gold     — gilded accents     */
+  --aa-burnt-umber:     #67341c;   /* Burnt Umber      — links, deep frames */
+
+  /* ----- SECONDARY PALETTE ---------------------------------------------
+     Pulled in for emphasis: seals, highlights, rare flourishes. */
+  --aa-philosophers-gold: #c49a3d; /* Philosopher's Gold — headings, rules  */
+  --aa-silver-moon:       #c0b5a4; /* Silver Moon        — muted borders    */
+  --aa-copper:            #9f602b; /* Copper             — secondary links  */
+  --aa-deep-emerald:      #264132; /* Deep Emerald       — success, quotes  */
+  --aa-crimson-wax-seal:  #65241d; /* Crimson Wax Seal   — alerts, hovers   */
+
+  /* ----- ATMOSPHERIC PALETTE ------------------------------------------
+     The "night sky" set: chrome, footer, headers, watermarks. */
+  --aa-midnight-indigo: #23273b;   /* Midnight Indigo — header / footer     */
+  --aa-celestial-blue:  #47536d;   /* Celestial Blue  — hover on dark       */
+  --aa-arcane-violet:   #4e313d;   /* Arcane Violet   — accent bands        */
+  --aa-smoky-ash:       #837053;   /* Smoky Ash       — meta text, captions */
+  --aa-faded-parchment: #ddcaa9;   /* Faded Parchment — text on dark        */
+
+  /* ----- SEMANTIC ALIASES --------------------------------------------- */
+  --aa-bg:             var(--aa-parchment-beige);
+  --aa-bg-panel:       var(--aa-aged-paper);
+  --aa-text:           var(--aa-charcoal-black);
+  --aa-text-muted:     var(--aa-smoky-ash);
+  --aa-link:           var(--aa-burnt-umber);
+  --aa-link-hover:     var(--aa-crimson-wax-seal);
+  --aa-heading:        var(--aa-burnt-umber);
+  --aa-rule:           var(--aa-antique-gold);
+  --aa-gilt:           var(--aa-philosophers-gold);
+  --aa-chrome-bg:      var(--aa-midnight-indigo);
+  --aa-chrome-text:    var(--aa-faded-parchment);
+  --aa-chrome-hover:   var(--aa-philosophers-gold);
+}
+
+/* --------------------------------------------------------------------------
+   Swatch utility classes — set text/background from any palette entry.
+   e.g. <span class="aa-bg-deep-emerald aa-fg-faded-parchment">…</span>
+   -------------------------------------------------------------------------- */
+.aa-bg-parchment-beige   { background-color: var(--aa-parchment-beige); }
+.aa-bg-aged-paper        { background-color: var(--aa-aged-paper); }
+.aa-bg-charcoal-black    { background-color: var(--aa-charcoal-black); }
+.aa-bg-antique-gold      { background-color: var(--aa-antique-gold); }
+.aa-bg-burnt-umber       { background-color: var(--aa-burnt-umber); }
+.aa-bg-philosophers-gold { background-color: var(--aa-philosophers-gold); }
+.aa-bg-silver-moon       { background-color: var(--aa-silver-moon); }
+.aa-bg-copper            { background-color: var(--aa-copper); }
+.aa-bg-deep-emerald      { background-color: var(--aa-deep-emerald); }
+.aa-bg-crimson-wax-seal  { background-color: var(--aa-crimson-wax-seal); }
+.aa-bg-midnight-indigo   { background-color: var(--aa-midnight-indigo); }
+.aa-bg-celestial-blue    { background-color: var(--aa-celestial-blue); }
+.aa-bg-arcane-violet     { background-color: var(--aa-arcane-violet); }
+.aa-bg-smoky-ash         { background-color: var(--aa-smoky-ash); }
+.aa-bg-faded-parchment   { background-color: var(--aa-faded-parchment); }
+
+.aa-fg-parchment-beige   { color: var(--aa-parchment-beige); }
+.aa-fg-aged-paper        { color: var(--aa-aged-paper); }
+.aa-fg-charcoal-black    { color: var(--aa-charcoal-black); }
+.aa-fg-antique-gold      { color: var(--aa-antique-gold); }
+.aa-fg-burnt-umber       { color: var(--aa-burnt-umber); }
+.aa-fg-philosophers-gold { color: var(--aa-philosophers-gold); }
+.aa-fg-silver-moon       { color: var(--aa-silver-moon); }
+.aa-fg-copper            { color: var(--aa-copper); }
+.aa-fg-deep-emerald      { color: var(--aa-deep-emerald); }
+.aa-fg-crimson-wax-seal  { color: var(--aa-crimson-wax-seal); }
+.aa-fg-midnight-indigo   { color: var(--aa-midnight-indigo); }
+.aa-fg-celestial-blue    { color: var(--aa-celestial-blue); }
+.aa-fg-arcane-violet     { color: var(--aa-arcane-violet); }
+.aa-fg-smoky-ash         { color: var(--aa-smoky-ash); }
+.aa-fg-faded-parchment   { color: var(--aa-faded-parchment); }
+
+/* --------------------------------------------------------------------------
+   Palette reference board — drop <div class="aa-palette-board"> … </div>
+   with .aa-swatch children to display the scheme on a page.
+   -------------------------------------------------------------------------- */
+.aa-palette-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin: 1.5rem 0;
+}
+.aa-swatch {
+  border: 1px solid var(--aa-smoky-ash);
+  border-radius: 2px;
+  overflow: hidden;
+  font-size: 0.75rem;
+  text-align: center;
+  background: var(--aa-aged-paper);
+}
+.aa-swatch > span {
+  display: block;
+  height: 88px;
+}
+.aa-swatch > b,
+.aa-swatch > small {
+  display: block;
+  padding: 2px 4px;
+  color: var(--aa-charcoal-black);
+}
+.aa-swatch > small { opacity: 0.7; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 600px) {
+  .aa-palette-board { grid-template-columns: repeat(2, 1fr); }
+}

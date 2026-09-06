@@ -108,12 +108,25 @@ p, li { max-width: 68ch; }
 
 a {
   color: var(--aa-link, #67341c);
-  text-decoration-color: rgba(191, 148, 49, 0.6);
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 0.08em;
   text-underline-offset: 0.15em;
   &:hover {
     color: var(--aa-link-hover, #65241d);
-    text-decoration-color: currentColor;
   }
+}
+
+// Chrome links (title, nav, footer nav) keep their own weight and stay clean —
+// the underline + bolder ink is for prose.
+.site-title,
+.site-nav .page-link,
+.aa-footer-nav a,
+.site-footer .footer-heading a {
+  font-weight: inherit;
+  text-decoration-line: none;
+  &:hover { text-decoration-line: none; }
 }
 
 ::selection { background: rgba(191, 148, 49, 0.4); }

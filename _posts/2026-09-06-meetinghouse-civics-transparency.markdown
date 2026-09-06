@@ -3,7 +3,6 @@ layout: post
 title: "Meetinghouse: Civics Transparency"
 date: 2026-09-06 18:00:00 -0400
 author: Colin Williams
-categories: civics
 ---
 
 Recently I've been interested in our local government, specifically

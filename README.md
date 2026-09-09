@@ -25,11 +25,13 @@ data engineering, and accessibility) and how to get in touch.
 
 ## Structure
 
-- `_posts/` — the workshop journal
-- `_layouts/`, `_includes/` — theme overrides on top of Minima
-- `assets/css/palette.css` — the Alchemical Artisans colour system
-- `assets/main.scss` — the site theme
-- `accessibility.md`, `about.markdown` — standalone pages
+- `_posts/`: the workshop journal
+- `_layouts/`, `_includes/`: theme overrides on top of Minima
+- `assets/css/palette.css`: the Alchemical Artisans colour system
+- `assets/main.scss`: the site theme
+- `assets/darkmoon-compass.jpg`: profile banner art
+- `accessibility.md`, `about.markdown`: standalone pages
+- `README-GITHUB.md`: source for the GitHub organisation profile
 
 ## Authors
 
